@@ -14,20 +14,21 @@ class LobbyAPIController extends Controller
 
     public function create(Request $request){
 
+        
+
         $fields = $request->validate([
             'LobbyName' => 'required|string',
             'HostName' => 'required|string|exists:users,name',
             'CurrentPlayers' => 'required|integer',
             'MaxPlayers' => 'required|integer',
-            'HostIP' => 'required|ip',
         ]);
-
+        $HostIP = request()->ip();
         $lobby = Lobby::create([
             'LobbyName' => $fields['LobbyName'],
             'HostName' => $fields['LobbyName'],
             'CurrentPlayers' => $fields['CurrentPlayers'],
             'MaxPlayers' => $fields['MaxPlayers'], 
-            'HostIP' => $fields['HostIP'], 
+            'HostIP' => $HostIP, 
         ]);
 
         return [
