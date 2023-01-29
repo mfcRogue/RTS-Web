@@ -26,5 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/lobby/createnewlobby', [LobbyAPIController::class, 'create']);
+    Route::post('/lobby/getlobbyinfo', [LobbyAPIController::class, 'getInfo']);
 
 });

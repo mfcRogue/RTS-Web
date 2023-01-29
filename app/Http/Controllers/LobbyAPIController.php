@@ -36,4 +36,18 @@ class LobbyAPIController extends Controller
         ];
 
     }
+    public function getInfo(Request $request)
+    {
+        $fields = $request->validate([
+            'LobbyName' => 'required|string|exists:lobbies,LobbyName',
+            'HostName' => 'required|string|exists:users,name',
+        ]);
+        $model = ModelName::where('HostName', $fields['HostName'])
+        ->where('LobbyName', $fields['LobbyName'])
+        ->first();
+        return response()->json($model);
+
+    }
+
+
 }
