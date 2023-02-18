@@ -50,9 +50,12 @@ class LobbyAPIController extends Controller
         ->first();
         return response()->json($model);
 
-
-
     }
 
-
+    public function getAll(Request $request)
+    {
+       
+        $model = Lobby::all();
+        return response()->json($model);
+    }
 }
