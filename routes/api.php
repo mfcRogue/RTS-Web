@@ -27,6 +27,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/lobby/createnewlobby', [LobbyAPIController::class, 'create']);
     Route::post('/lobby/getlobbyinfo', [LobbyAPIController::class, 'getInfo']);
-    Route::get('/lobby/getlobbyall', [LobbyAPIController::class, 'getAll']);
+    Route::post('/lobby/getlobbyall', [LobbyAPIController::class, 'getAll']);
 
 });
