@@ -25,7 +25,7 @@ class LobbyAPIController extends Controller
         $HostIP = request()->ip();
         $lobby = Lobby::create([
             'LobbyName' => $fields['LobbyName'],
-            'HostName' => $fields['LobbyName'],
+            'HostName' => $fields['HostName'],
             'CurrentPlayers' => $fields['CurrentPlayers'],
             'MaxPlayers' => $fields['MaxPlayers'], 
             'HostIP' => $HostIP, 
