@@ -36,6 +36,19 @@ class LobbyAPIController extends Controller
         ];
 
     }
+
+    public function destroy(Request $request)
+    {
+        $fields = $request->validate([
+            'LobbyName' => 'required|string|exists:lobbies,LobbyName',
+            'HostName' => 'required|string|exists:users,name',
+        ]);
+    
+        $model = Lobby::where('HostName', $fields['HostName'])
+        ->where('LobbyName', $fields['LobbyName'])
+        ->delete();
+    }
+
     public function getInfo(Request $request)
     {
        
@@ -57,5 +70,13 @@ class LobbyAPIController extends Controller
        
         $model = Lobby::all();
         return response()->json($model);
+    }
+    public function leave(Request $request)
+    {
+
+    }
+    public function join(Request $request)
+    {
+        
     }
 }

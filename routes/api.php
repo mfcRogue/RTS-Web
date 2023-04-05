@@ -26,7 +26,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/lobby/createnewlobby', [LobbyAPIController::class, 'create']);
+    Route::post('/lobby/destroylobby', [LobbyAPIController::class, 'destroy']);
     Route::post('/lobby/getlobbyinfo', [LobbyAPIController::class, 'getInfo']);
-    Route::post('/lobby/getlobbyall', [LobbyAPIController::class, 'getAll']);
+    Route::post('/lobby/listlobby', [LobbyAPIController::class, 'getAll']);
+    Route::post('/lobby/leavelobby', [LobbyAPIController::class, 'leave']);
+    Route::post('/lobby/joinlobby', [LobbyAPIController::class, 'join']);
 
 });
