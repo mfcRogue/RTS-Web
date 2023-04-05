@@ -47,6 +47,9 @@ class LobbyAPIController extends Controller
         $model = Lobby::where('HostName', $fields['HostName'])
         ->where('LobbyName', $fields['LobbyName'])
         ->delete();
+
+        return response()->json($model);
+
     }
 
     public function getInfo(Request $request)
